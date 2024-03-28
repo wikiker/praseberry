@@ -1,5 +1,11 @@
 { inputs, outputs, config, lib, pkgs, ... }:
 
+let
+  ports = {
+    homepage = 8010;
+    mympd = 8020;
+  };
+in
 {
   imports =
     [
@@ -9,6 +15,7 @@
       #Modules
       ## Webserver
       ../modules/webserver
+      ../modules/songs
 
       # Generated hardware config
       ./hardware-configuration.nix
@@ -91,6 +98,10 @@
     btop
     eza
   ];
+
+  # Module configuration
+  webserver.ports = ports;
+  songs.port = ports.mympd;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

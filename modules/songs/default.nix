@@ -1,14 +1,25 @@
-{ pkgs, ports, ... }:
+{ lib, pkgs, config, .. }:
 
+let
+  mympd_port = config.songs.port;
+in
 {
-  environment.systemPackages = with pkgs; [
-    mpd
-    mympd
-  ];
+  options = {
+    songs.port = mkOption {
+      type = with types; int;
+    };
+  };
+  
+  config = {
+    environment.systemPackages = with pkgs; [
+      mpd
+      mympd
+    ];
 
-  services.mpd.enable = true;
-  services.mympd = {
-    enable = true;
-    settings.http_port = ports.mympd;
+    services.mpd.enable = true;
+    services.mympd = {
+      enable = true;
+      settings.http_port = mympd_port;
+    };
   };
 }
