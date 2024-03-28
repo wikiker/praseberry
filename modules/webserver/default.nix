@@ -36,6 +36,6 @@ in
       enable = true;
       listenPort = ports.homepage;
     };
-    systemd.services.homepage-dashboard.environment.HOMEPAGE_CONFIG_DIR = homepage-config;
+    systemd.services.homepage-dashboard.environment.HOMEPAGE_CONFIG_DIR = lib.mkForce homepage-config;
   };
 }
