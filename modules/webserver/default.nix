@@ -20,7 +20,7 @@ in
     };
   };
 
-  services.homepage-dashboard {
+  services.homepage-dashboard = {
     enable = true;
     listenPort = ports.homepage;
   };
