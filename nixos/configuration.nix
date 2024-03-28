@@ -13,13 +13,27 @@ in
       ./users.nix
 
       #Modules
-      ## Webserver
       ../modules/webserver
       ../modules/songs
 
       # Generated hardware config
       ./hardware-configuration.nix
     ];
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+        outputs.overlays.modifications
+        outputs.overlays.unstable-packages
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Enable if you want unfree packages
+      # allowUnfree = true;
+    };
+  };
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
