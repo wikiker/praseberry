@@ -1,0 +1,4 @@
+---
+- Group
+  - mympd:
+      href: http://localhost:8020
