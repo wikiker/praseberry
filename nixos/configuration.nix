@@ -81,6 +81,11 @@
     git
     neovim
     wget
+
+    # Utilities
+    bat
+    btop
+    eza
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
