@@ -27,6 +27,9 @@ in
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString ports.homepage}";
         };
+        locations."/znelky" = {
+          proxyPass = "http://localhost:${builtins.toString ports.mympd}";
+        };
       };
     };
 
@@ -37,6 +40,19 @@ in
       settings = {
         title = "Praseberry";
       };
+
+      services = [
+        {
+          "Sous" = [
+            {
+              "mympd" = {
+                description = "znělky";
+                href = "http://localhost/znelky";
+              };
+            }
+          ]
+        }
+      ];
     };
   };
 }
