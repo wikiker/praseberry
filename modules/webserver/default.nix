@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ inputs, lib, pkgs, config, ... }:
 
 with lib;
 let
@@ -6,8 +6,12 @@ let
   ports = cfg.ports;
 in
 {
+  disabledModules = [
+    "services/misc/homepage-dashboard.nix"
+  ];
+
   imports = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/homepage-dashboard"
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/homepage-dashboard.nix"
   ];
 
   options = {
