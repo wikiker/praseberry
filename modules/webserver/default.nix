@@ -29,7 +29,7 @@ in
         };
         locations."~/znelky(?<sub_dir>.*)$" = {
           proxyPass = "http://localhost:${builtins.toString ports.mympd}$sub_dir";
-          extraOptions = ''
+          extraConfig = ''
           proxy_set_header X-Real-IP  $remote_addr;
           proxy_set_header X-Forwarded-For $remote_addr;
           proxy_set_header Host $host;'';
