@@ -27,7 +27,7 @@ in
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString ports.homepage}";
         };
-        locations."/znelky(?<sub_dir>.*)$" = {
+        locations."~/znelky(?<sub_dir>.*)$" = {
           proxyPass = "http://localhost:${builtins.toString ports.mympd}$sub_dir";
           extraOptions = ''
           proxy_set_header X-Real-IP  $remote_addr;
