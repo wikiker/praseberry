@@ -4,6 +4,11 @@ with lib;
 let
   cfg = config.webserver;
   ports = cfg.ports;
+
+  homepage-config = builtins.path {
+    path = ./homepage-config;
+    name = "homepage-config";
+  };
 in
 {
   options = {
@@ -31,5 +36,6 @@ in
       enable = true;
       listenPort = ports.homepage;
     };
+    systemd.services.homepage-dashboard.environment.HOMEPAGE_CONFIG_DIR = homepage-config;
   };
 }
