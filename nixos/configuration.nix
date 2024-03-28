@@ -6,6 +6,10 @@
       # Users
       ./users.nix
 
+      #Modules
+      ## Webserver
+      ../modules/webserver
+
       # Generated hardware config
       ./hardware-configuration.nix
     ];
