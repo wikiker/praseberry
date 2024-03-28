@@ -27,8 +27,8 @@ in
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString ports.homepage}";
         };
-        locations."/znelky" = {
-          proxyPass = "http://localhost:${builtins.toString ports.mympd}";
+        locations."/znelky(.*)$" = {
+          proxyPass = "http://localhost:${builtins.toString ports.mympd}$1";
         };
       };
     };
@@ -50,7 +50,7 @@ in
                 href = "http://localhost/znelky";
               };
             }
-          ]
+          ];
         }
       ];
     };
