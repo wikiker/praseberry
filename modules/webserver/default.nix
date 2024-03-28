@@ -4,13 +4,12 @@ with lib;
 let
   cfg = config.webserver;
   ports = cfg.ports;
-
-  homepage-config = builtins.path {
-    path = ./homepage-config;
-    name = "homepage-config";
-  };
 in
 {
+  imports = [
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/homepage-dashboard"
+  ];
+
   options = {
     webserver.ports = mkOption {
       type = with types; attrsOf int;
@@ -18,11 +17,6 @@ in
   };
 
   config = {
-    environment.systemPackages = with pkgs; [
-      homepage-dashboard
-      nginx
-    ];
-
     services.nginx = {
       enable = true;
       virtualHosts.localhost = {
@@ -35,7 +29,10 @@ in
     services.homepage-dashboard = {
       enable = true;
       listenPort = ports.homepage;
+
+      settings = {
+        title = "Praseberry";
+      };
     };
-    systemd.services.homepage-dashboard.environment.HOMEPAGE_CONFIG_DIR = lib.mkForce homepage-config;
   };
 }
