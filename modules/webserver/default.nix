@@ -16,8 +16,8 @@ in
     virtualHosts.localhost = {
       locations."/" = {
         proxyPass = "http://localhost:${ports.homepage}";
-      }
-    }
+      };
+    };
   };
 
   services.homepage-dashboard {
