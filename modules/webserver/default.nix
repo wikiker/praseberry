@@ -27,13 +27,15 @@ in
         locations."/" = {
           proxyPass = "http://localhost:${builtins.toString ports.homepage}";
         };
-        locations."~/znelky(?<sub_dir>.*)$" = {
-          proxyPass = "http://localhost:${builtins.toString ports.mympd}$sub_dir";
+        locations."/znelky" = {
+          proxyPass = "http://localhost:${builtins.toString ports.mympd}";
           extraConfig = ''
           internal;
           proxy_set_header X-Real-IP  $remote_addr;
           proxy_set_header X-Forwarded-For $remote_addr;
-          proxy_set_header Host $host;'';
+          proxy_set_header Host $host;
+          proxy_redirect / /znelky/;
+          '';
         };
       };
     };
