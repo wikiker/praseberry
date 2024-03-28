@@ -15,7 +15,7 @@ in
     enable = true;
     virtualHosts.localhost = {
       locations."/" = {
-        proxyPass = "http://localhost:${ports.homepage}";
+        proxyPass = "http://localhost:${builtins.toString ports.homepage}";
       };
     };
   };
