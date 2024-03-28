@@ -3,9 +3,13 @@
 let
   ports = {
     homepage = 8010;
+    mympd = 8020;
   };
 in
 {
+  imports = [
+    ../songs
+  ];
   environment.systemPackages = with pkgs; [
     homepage-dashboard
     nginx
