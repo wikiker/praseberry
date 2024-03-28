@@ -1,5 +1,6 @@
-{ lib, pkgs, config, .. }:
+{ lib, pkgs, config, ... }:
 
+with lib;
 let
   mympd_port = config.songs.port;
 in
@@ -11,9 +12,9 @@ in
   };
   
   config = {
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with pkgs [
       mpd
-      mympd
+      unstable.mympd #There is no services.mympd on stable branch
     ];
 
     services.mpd.enable = true;

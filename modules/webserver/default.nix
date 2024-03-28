@@ -8,7 +8,7 @@ in
 {
   options = {
     webserver.ports = mkOption {
-      type = with types; listOf int;
+      type = with types; attrsOf int;
     };
   };
 
