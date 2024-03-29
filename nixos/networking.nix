@@ -1,7 +1,7 @@
 {...}:
 
 let
-  static_ip = "192.168.17.11";
+  static_ip = "192.168.68.11";
 in
 {
   networking = {
@@ -10,11 +10,11 @@ in
     interfaces = {
       enu1u1.ipv4.addresses = [{
         address = static_ip;
-        # prefixLength = 24;
+        prefixLength = 16;
       }];
       wlan0.ipv4.addresses = [{
         address = static_ip;
-        # prefixLength = 24;
+        prefixLength = 16;
       }];
     };
   };
