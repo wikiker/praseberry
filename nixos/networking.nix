@@ -5,6 +5,7 @@ let
 in
 {
   networking = {
+    wireless.enable = true;
     firewall.enable = false;
     useDHCP = false;
 

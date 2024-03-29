@@ -64,7 +64,6 @@ in
   boot.loader.generic-extlinux-compatible.enable = true;
 
   networking.hostName = "praseberry";
-  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Prague";
 
