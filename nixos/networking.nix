@@ -5,6 +5,7 @@ let
 in
 {
   networking = {
+    firewall.enable = false;
     useDHCP = false;
 
     interfaces = {
@@ -16,6 +17,10 @@ in
         address = static_ip;
         prefixLength = 16;
       }];
+    };
+    defaultGateway = {
+      address = "192.168.68.1";
+      interface = "enu1u1";
     };
   };
 }
