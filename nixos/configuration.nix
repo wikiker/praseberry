@@ -63,6 +63,7 @@ in
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
+  networking.networkmanager.enable = true;
   networking.hostName = "praseberry";
 
   time.timeZone = "Europe/Prague";
