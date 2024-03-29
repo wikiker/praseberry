@@ -11,6 +11,7 @@ in
     [
       # Users
       ./users.nix
+      ./networking.nix
 
       #Modules
       ../modules/webserver
