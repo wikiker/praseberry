@@ -106,6 +106,7 @@ in
     curl
     git
     neovim
+    php
     wget
 
     # Utilities
