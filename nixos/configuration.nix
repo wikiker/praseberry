@@ -107,6 +107,7 @@ in
     git
     neovim
     php
+    socat
     wget
 
     # Utilities
