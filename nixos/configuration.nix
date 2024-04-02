@@ -114,6 +114,7 @@ in
     bat
     btop
     eza
+    tee
   ];
 
   # Module configuration

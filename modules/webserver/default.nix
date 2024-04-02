@@ -72,8 +72,9 @@ in
       isSystemUser = true;
       createHome = true;
       home = dataDir;
-      homeMode = "750";
+      homeMode = "770";
       group  = app;
+      useDefaultShell = true;
     };
     users.groups.${app} = {
       members = [
