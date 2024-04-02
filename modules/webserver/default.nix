@@ -34,7 +34,7 @@ in
         display_errors = on;
         display_startup_errors = on;
       '';
-      phpEnv."PATH" = lib.makeBinPath [ pkgs.php pkgs.socat ];
+      phpEnv."PATH" = lib.makeBinPath [ pkgs.php pkgs.socat pkgs.bash ];
     };
 
     services.nginx = {
