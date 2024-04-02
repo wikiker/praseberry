@@ -58,6 +58,7 @@ in
         locations."/znelky" = {
           proxyPass = "http://localhost:${builtins.toString ports.mympd}";
           extraConfig = ''
+            rewrite ^/znelky/(.*) /$1 break;
             proxy_set_header X-Real-IP  $remote_addr;
             proxy_set_header X-Forwarded-For $remote_addr;
             proxy_set_header Host $host;
@@ -71,7 +72,7 @@ in
       isSystemUser = true;
       createHome = true;
       home = dataDir;
-      homeMode = "750"
+      homeMode = "750";
       group  = app;
     };
     users.groups.${app} = {
