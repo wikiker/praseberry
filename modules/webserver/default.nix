@@ -37,6 +37,11 @@ in
       enable = true;
       virtualHosts.localhost = {
         root = dataDir;
+
+        serverAliases = [
+          "sous.dlaza.cz"
+        ];
+
         locations."/" = {
           tryFiles = "$uri $uri/ /index.php";
         };
