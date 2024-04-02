@@ -64,7 +64,7 @@ in
       home = dataDir;
       group  = app;
     };
-    users.users.${config.nginx.user} {
+    users.users.${config.nginx.user} = {
       group = app;
     };
     users.groups.${app} = {};
