@@ -34,12 +34,7 @@ in
         display_errors = on;
         display_startup_errors = on;
       '';
-      phpEnv."PATH" = lib.makeBinPath with pkgs; [
-        bash
-        php
-        sleep
-        socat
-      ];
+      phpEnv."PATH" = [ pkgs.php /run/current-system/sw/bin ];
     };
 
     services.nginx = {
