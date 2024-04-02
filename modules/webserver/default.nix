@@ -30,6 +30,10 @@ in
         "php_admin_flag[log_errors]" = true;
         "catch_workers_output" = true;
       };
+      phpOptions = ''
+        display_errors = on;
+        display_startup_errors = on;
+      '';
       phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
     };
 
@@ -76,6 +80,7 @@ in
       group  = app;
       useDefaultShell = true;
     };
+    users.users.${config.services.nginx.user}.useDefaultShell = true;
     users.groups.${app} = {
       members = [
         config.services.nginx.user
