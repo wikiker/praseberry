@@ -58,7 +58,7 @@ in
         locations."/znelky" = {
           proxyPass = "http://localhost:${builtins.toString ports.mympd}";
           extraConfig = ''
-            rewrite ^/znelky/(.*) /$1 break;
+            rewrite ^/znelky(.*) $1 break;
             proxy_set_header X-Real-IP  $remote_addr;
             proxy_set_header X-Forwarded-For $remote_addr;
             proxy_set_header Host $host;
