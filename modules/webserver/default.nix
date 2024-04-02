@@ -34,7 +34,7 @@ in
         display_errors = on;
         display_startup_errors = on;
       '';
-      phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+      phpEnv."PATH" = lib.makeBinPath [ pkgs.php pkgs.socat ];
     };
 
     services.nginx = {
@@ -78,9 +78,9 @@ in
       home = dataDir;
       homeMode = "770";
       group  = app;
-      useDefaultShell = true;
+      # useDefaultShell = true;
     };
-    users.users.${config.services.nginx.user}.useDefaultShell = true;
+    # users.users.${config.services.nginx.user}.useDefaultShell = true;
     users.groups.${app} = {
       members = [
         config.services.nginx.user
