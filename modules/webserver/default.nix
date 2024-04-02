@@ -44,6 +44,7 @@ in
 
         locations."/" = {
           tryFiles = "$uri $uri/ /index.php";
+          index = "index.php";
         };
 
         locations."~ \\.php$" = {
@@ -57,11 +58,10 @@ in
         locations."/znelky" = {
           proxyPass = "http://localhost:${builtins.toString ports.mympd}";
           extraConfig = ''
-          internal;
-          proxy_set_header X-Real-IP  $remote_addr;
-          proxy_set_header X-Forwarded-For $remote_addr;
-          proxy_set_header Host $host;
-          proxy_redirect / /znelky/;
+            proxy_set_header X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_set_header Host $host;
+            proxy_redirect off;
           '';
         };
       };
@@ -71,6 +71,7 @@ in
       isSystemUser = true;
       createHome = true;
       home = dataDir;
+      homeMode = "750"
       group  = app;
     };
     users.groups.${app} = {
