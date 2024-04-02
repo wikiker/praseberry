@@ -37,6 +37,10 @@ in
       enable = true;
       virtualHosts.localhost = {
         root = dataDir;
+        locations."/" = {
+          tryFiles = "$uri $uri/ /index.php";
+        };
+
         locations."~ \\.php$" = {
           extraConfig = ''
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
