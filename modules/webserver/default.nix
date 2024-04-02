@@ -36,8 +36,8 @@ in
     services.nginx = {
       enable = true;
       virtualHosts.localhost = {
-        locations."/" = {
-          root = dataDir;
+        root = dataDir;
+        locations."~ \\.php$" = {
           extraConfig = ''
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
             fastcgi_pass unix:${config.services.phpfpm.pools.${app}.socket};
