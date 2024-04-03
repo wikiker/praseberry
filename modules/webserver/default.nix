@@ -84,6 +84,7 @@ in
     users.groups.${app} = {
       members = [
         config.services.nginx.user
+        "prase"
       ];
     };
   };
